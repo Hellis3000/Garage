@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Garage;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace GarageMaker
         void GetGarageSize();
         void SetGarage();
         void searchVehicles();
-        bool IsGarageFull();
+        bool CheckParking();
         void Park();
 
     }

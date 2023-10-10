@@ -13,20 +13,20 @@ namespace GarageMaker
     {
         private Garage<IVehicle> newGarage;
 
-        private Garage<Airplane> airplaneGarage;
-        private Garage<Bus> busGarage;
-        private Garage<Car> carGarage;
-        private Garage<MotorCycle> motorcycleGarage;
-        private Garage<Boat> boatGarage;
+        //private Garage<Airplane> airplaneGarage; //These were meant for unique vehicle garages. But the code got messy, needed to move onto the tests. 
+        //private Garage<Bus> busGarage;
+        //private Garage<Car> carGarage;
+        //private Garage<MotorCycle> motorcycleGarage;
+        //private Garage<Boat> boatGarage;
 
         public GarageHandler(int capacity)
         {
             newGarage = new Garage<IVehicle>(capacity);
-            airplaneGarage = new Garage<Airplane>(capacity);
-            busGarage = new Garage<Bus>(capacity);
-            carGarage = new Garage<Car>(capacity);
-            motorcycleGarage = new Garage<MotorCycle>(capacity);
-            boatGarage = new Garage<Boat>(capacity);
+            //airplaneGarage = new Garage<Airplane>(capacity);
+            //busGarage = new Garage<Bus>(capacity);
+            //carGarage = new Garage<Car>(capacity);
+            //motorcycleGarage = new Garage<MotorCycle>(capacity);
+            //boatGarage = new Garage<Boat>(capacity);
         }
 
         public void AddVehicle(IVehicle vehicle)
@@ -34,36 +34,9 @@ namespace GarageMaker
             newGarage.AddVehicle(vehicle);
         }
 
-        public void CheckParking(IVehicle vehicle)
+        public bool IsGarageFull()
         {
-            if (!newGarage.IsFull())
-            {
-                Console.WriteLine("Free spot");
-                newGarage.AddVehicle(vehicle); // Park the vehicle
-            }
-            else
-            {
-                Console.WriteLine("The garage is full. Cannot add more vehicles.");
-            }
-        }
-
-        public List<string> ListAllVehicles<TVehicle>() where TVehicle : IVehicle
-        {
-            List<string> vehicleList = new List<string>();
-
-            foreach (var vehicle in newGarage)
-            {
-                if (vehicle is TVehicle typedVehicle && typedVehicle != null)
-                {
-                    string vehicleInfo = GetVehicleInfo(typedVehicle);
-                    if (vehicleInfo != null)
-                    {
-                        vehicleList.Add(vehicleInfo);
-                    }
-                }
-            }
-
-            return vehicleList;
+            return newGarage.IsFull();
         }
 
         public List<string> ListAllVehiclesInGarage()

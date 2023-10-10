@@ -1,4 +1,4 @@
-﻿using Garage; 
+﻿using Garage; // Assuming your IVehicle and IHandler interfaces are defined here
 using System.Drawing;
 using System.Numerics;
 
@@ -13,8 +13,7 @@ namespace GarageMaker
         private List<string> searchTerms; // stores terms to search with.
         public int loopNr;
         public List<string> usedRegNos = new List<string>(); //List of allready used reg numbers.
-        private Garage<IVehicle> garage; // Defines the garage variable here
-
+       
 
 
         public Manager()
@@ -27,17 +26,20 @@ namespace GarageMaker
         }
 
 
-        public bool IsGarageFull()
+        public bool CheckParking()
         {
-            if (garage != null && garage.IsFull())
+            if (!handler.IsGarageFull())
             {
-                return true; // The garage is full
+                Console.WriteLine("Free spot");
+                return true; // Parking available
             }
             else
             {
-                return false; // There's an open spot in the garage
+                Console.WriteLine("The garage is full. Cannot add more vehicles.");
+                return false; // Parking not available
             }
         }
+
         public void Run()
         {
             while (true)
@@ -78,7 +80,7 @@ namespace GarageMaker
                                 Console.WriteLine("You need to make a garage first");
                                 break;
                             }
-                            else if (IsGarageFull()) // if the garage is full, it breaks out of the case.
+                            else if (CheckParking()) // if the garage is full, it breaks out of the case.
                             {
                                     Console.WriteLine("Garage is full");
                                     break;

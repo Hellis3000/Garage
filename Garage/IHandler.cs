@@ -4,7 +4,7 @@ using GarageMaker;
 public interface IHandler
 {
 
-    void CheckParking(IVehicle vehicle);
+    bool IsGarageFull();
     List<string> ListAllVehiclesInGarage();
     void AddVehicle(IVehicle vehicle);
 
