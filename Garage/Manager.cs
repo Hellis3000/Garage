@@ -1,4 +1,4 @@
-﻿using Garage; // Assuming your IVehicle and IHandler interfaces are defined here
+﻿using Garage; 
 using System.Drawing;
 using System.Numerics;
 
@@ -13,15 +13,15 @@ namespace GarageMaker
         private List<string> searchTerms; // stores terms to search with.
         public int loopNr;
         public List<string> usedRegNos = new List<string>(); //List of allready used reg numbers.
-        private Garage<IVehicle> garage; // Define the garage variable here
+        private Garage<IVehicle> garage; // Defines the garage variable here
 
 
 
         public Manager()
         {
             inputCap = 0; // Give inputCap initial value.
-            searchTerms = new List<string>();
             handler = new GarageHandler(inputCap);
+           
 
 
         }
@@ -78,8 +78,8 @@ namespace GarageMaker
                                 Console.WriteLine("You need to make a garage first");
                                 break;
                             }
-                            else if (IsGarageFull())
-                                {
+                            else if (IsGarageFull()) // if the garage is full, it breaks out of the case.
+                            {
                                     Console.WriteLine("Garage is full");
                                     break;
                                 }
@@ -195,7 +195,7 @@ namespace GarageMaker
                 }
 
                 switch (vehicleType.ToLower())
-                {
+                { // Create methods for each vehicle. 
                     case "car":
                         CreateCar();
                         loopNr--;
@@ -282,7 +282,7 @@ namespace GarageMaker
 
             string regno;
 
-            do
+            do //Ensures that while the regnumber isnt unique, it asks you to write a new one.
             {
                 Console.WriteLine("Registry Number:");
                 regno = Console.ReadLine().ToUpper();
@@ -324,7 +324,7 @@ namespace GarageMaker
 
             string regno;
 
-            do
+            do //Ensures that while the regnumber isnt unique, it asks you to write a new one.
             {
                 Console.WriteLine("Registry Number:");
                 regno = Console.ReadLine().ToUpper();
@@ -366,7 +366,7 @@ namespace GarageMaker
 
             string regno;
 
-            do
+            do//Ensures that while the regnumber isnt unique, it asks you to write a new one.
             {
                 Console.WriteLine("Registry Number:");
                 regno = Console.ReadLine().ToUpper();
@@ -407,7 +407,7 @@ namespace GarageMaker
 
             string regno;
 
-            do
+            do //Ensures that while the regnumber isnt unique, it asks you to write a new one.
             {
                 Console.WriteLine("Registry Number:");
                 regno = Console.ReadLine().ToUpper();
@@ -438,11 +438,11 @@ namespace GarageMaker
         {
             Console.WriteLine("Enter search terms (separated by spaces):");
             string searchTermInput = Console.ReadLine();
-            searchTerms = searchTermInput.Split(' ').ToList(); // Split the input into search terms
+            searchTerms = searchTermInput.Split(' ').ToList(); // Splits the input into search terms
 
-            List<string> matchingVehicles = handler.SearchAndListVehicles(searchTerms);
+            List<string> matchingVehicles = handler.SearchAndListVehicles(searchTerms); // Uses the list defined in GarageHandler to match input with current vehicles. 
 
-            if (matchingVehicles.Count > 0)
+            if (matchingVehicles.Count > 0) // For as long as it remains above zero, it iterates trough the list and pings any matches. 
             {
                 Console.WriteLine("Matching Vehicles:");
                 foreach (string vehicleInfo in matchingVehicles)

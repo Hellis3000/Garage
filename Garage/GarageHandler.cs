@@ -12,6 +12,7 @@ namespace GarageMaker
     public class GarageHandler : IHandler
     {
         private Garage<IVehicle> newGarage;
+
         private Garage<Airplane> airplaneGarage;
         private Garage<Bus> busGarage;
         private Garage<Car> carGarage;
