@@ -15,8 +15,6 @@ namespace GarageMaker
 
         private T[] vehicles;
         private int capacity;
-        //IsFull
-
 
 
 
@@ -30,6 +28,7 @@ namespace GarageMaker
         }
         public void AddVehicle(T vehicle)
         {
+            //base for the methods adding vehicles ot empty spaces, utilized later on.
             for (int i = 0; i < vehicles.Length; i++)
             {
                 if (vehicles[i] == null)
@@ -56,6 +55,7 @@ namespace GarageMaker
 
         public IEnumerator<T> GetEnumerator()
         {
+            // shifting trough the array to find a specific, created vehicle.
             foreach (var item in vehicles)
             {
                 if (item != null) {

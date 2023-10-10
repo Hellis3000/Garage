@@ -71,9 +71,6 @@ namespace GarageMaker.Tests
                     Assert.IsTrue(output.Contains("Enter number of wheels:"));
                     Assert.IsTrue(output.Contains("Enter the color:"));
 
-                    // Add more specific assertions here based on the expected output
-
-                    // You can add more assertions based on the expected output for each case.
                 }
             }
         }
